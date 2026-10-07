@@ -1,5 +1,6 @@
 /**
- * Exercise (Chapter 2: Classes) — overloading, constructors, and static methods.
+ * Exercise (Chapter 2: Classes) — overloading, constructors, and static
+ * methods.
  *
  * "Overloading" means having several methods (or constructors) with the same
  * name that differ in their parameters. Complete the bodies below so the three
@@ -29,6 +30,7 @@ public class MyHashing {
    */
   public MyHashing(int seed) {
     // TODO: store the parameter in this object's seed field.
+    this.seed = seed;
   }
 
   /**
@@ -39,7 +41,9 @@ public class MyHashing {
    */
   public int hash(int value) {
     // TODO
-    return 0;
+    int previous = seed;
+    seed = value;
+    return previous;
   }
 
   /**
@@ -52,7 +56,9 @@ public class MyHashing {
    */
   public int hash(char value) {
     // TODO
-    return 0;
+    int previous = seed;
+    seed = value;
+    return (previous + value) % MODULO;
   }
 
   /**
@@ -65,6 +71,10 @@ public class MyHashing {
    */
   public static int hash(String value) {
     // TODO: String.toCharArray() may help.
-    return 0;
+    int sum = 0;
+    for (char c : value.toCharArray()) {
+      sum += c;
+    }
+    return sum;
   }
 }
